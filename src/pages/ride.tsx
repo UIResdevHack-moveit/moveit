@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 import { HStack , Image, VStack,Box, Button } from '@chakra-ui/react';
 
 
+import { Input } from '@/components/input/input';
 import Topnav from '@/components/navbar.tsx/topnav'
 import Navbar from '@/components/navbar.tsx/navbar'
 import Text from '@/components/text/text'
@@ -16,9 +17,23 @@ import Mode from '@/components/modes';
 const MyAwesomeMap = dynamic(() => import("@/components/map/map"), { ssr:false })
 
 function Ride() {
+
+    function doNothing(){
+        return null
+      }
+
   return (
     <Box overflow={"scroll"} h={"90vh"} >
         <Topnav/>
+
+        <Box p={"1em"}>
+            <Input 
+                placeHolder='Find people in your location' 
+                type='search' 
+                onInputChange={doNothing}
+            />
+        </Box>
+
         <MyAwesomeMap/>
 
         <Book/>

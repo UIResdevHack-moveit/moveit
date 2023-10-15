@@ -7,7 +7,7 @@ interface props {
     placeHolder: string
     type: string
     rest? :React.HTMLProps<HTMLParagraphElement>;
-    onInputChange?: (value: string) => void;
+    onInputChange: (value: string) => void;
 }
 
 

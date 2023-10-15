@@ -15,6 +15,10 @@ import { Box } from '@chakra-ui/react'
 function Rider() {
 
     const router = useRouter()
+    function doNothing(){
+        return null
+    }
+    
 
     function handleSubmit(e:any){
         e.preventDefault()
@@ -35,13 +39,41 @@ function Rider() {
 
                 <form style={formStyle} onSubmit={handleSubmit} action="">
 
-                    <Input placeHolder='Name' type='text'/>
-                    <Input placeHolder='Tricycle ID NO.' type='text' />
-                    <Input placeHolder='Tricycle Plate NO.' type='text' />
-                    <Input placeHolder='Driver’s license' type='text' />
-                    <Input placeHolder='Date of birth' type='date' />
-                    <Input placeHolder='Address' type='text' />
-                    <Input placeHolder='Add a picture' type='file' />
+                    <Input 
+                        placeHolder='Name' 
+                        type='text'
+                         onInputChange={doNothing}
+                    />
+                    <Input 
+                        placeHolder='Tricycle ID NO.' 
+                        type='text'
+                         onInputChange={doNothing} 
+                    />
+                    <Input 
+                        placeHolder='Tricycle Plate NO.' 
+                        type='text'
+                         onInputChange={doNothing} 
+                    />
+                    <Input 
+                        placeHolder='Driver’s license' 
+                        type='text'
+                         onInputChange={doNothing} 
+                    />
+                    <Input 
+                        placeHolder='Date of birth' 
+                        type='date'
+                         onInputChange={doNothing} 
+                    />
+                    <Input 
+                        placeHolder='Address' 
+                        type='text'
+                         onInputChange={doNothing} 
+                    />
+                    <Input 
+                        placeHolder='Add a picture' 
+                        type='file'
+                         onInputChange={doNothing} 
+                    />
                     <div style={buttonParent}>
                         <button style={buttonStyle}>Submit</button>
                     </div>

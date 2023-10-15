@@ -33,6 +33,10 @@ function Signup(Auth: Auth) {
     const handlePasswords = (value: string) => {
         setPassword(value);
     };
+
+    function doNothing(){
+        return null
+    }
     
 
     const handleSignup = async (e:any) => {
@@ -78,11 +82,13 @@ function Signup(Auth: Auth) {
                     <Input 
                         placeHolder='Username' 
                         type='text' 
+                        onInputChange={doNothing}
                     />
                     <Input 
                         placeHolder='Phone number' 
-                        type='num' /
-                    >
+                        type='num' 
+                        onInputChange={doNothing}
+                    />
                     <Input 
                         placeHolder='Password' 
                         type='password'

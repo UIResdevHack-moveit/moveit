@@ -13,6 +13,9 @@ const MyAwesomeMap = dynamic(() => import("@/components/map/map"), { ssr:false }
 function Destination() {
 
   const router = useRouter()
+  function doNothing(){
+    return null
+  }
 
   function handleSubmit(e:any){
       e.preventDefault()
@@ -38,6 +41,7 @@ function Destination() {
           <Input 
             placeHolder='Enter your destination' 
             type='text' 
+            onInputChange={doNothing}
           />
           <HStack w={"100%"} justifyContent={"flex-end"} mt={"2em"} >
             <Button
