@@ -2,9 +2,9 @@ import React from 'react';
 
 interface TextProps {
   ftz: string;
-  fwt: string | number;
+  fwt: string | number ;
   color: string;
-  text: string;
+  text: string | null | undefined;
   rest?: React.HTMLProps<HTMLParagraphElement>;
 }
 

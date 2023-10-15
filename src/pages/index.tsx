@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react'; // Import useState and useEffect
-import { VStack, Box, Text, HStack, Button } from '@chakra-ui/react';
+import { VStack, Box, Text, Image, Button } from '@chakra-ui/react';
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 
@@ -8,14 +8,12 @@ export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    // After 5 seconds, hide the splash screen
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000); 
 
-    // Clear the timer to prevent memory leaks when the component unmounts
     return () => clearTimeout(timer);
-  }, []); // The empty dependency array ensures this effect runs only once
+  }, []); 
 
   return (
     <>
@@ -39,13 +37,11 @@ function SplashScreen() {
     <Box
       bg={""}
       minH={"100vh"}
-      bgColor={"#EF9F8B"}
+      bgColor={"#FAE2DC"}
       display={"grid"}
       placeItems={"center"}
     >
-      <Text fontFamily={"poor"} fontSize={"56px"} color={"#080E11"} margin={0}>
-        Move it
-      </Text>
+     <Image src='/assets/images/move-it.png' />
     </Box>
   );
 }
@@ -53,7 +49,7 @@ function SplashScreen() {
 function Landing() {
   return (
     <VStack
-      pb={"3em"}
+      pb={"7em"}
       bgImage={'/assets/images/buttons.png'}
       bgSize={"cover"}
       justifyContent={"flex-end"}

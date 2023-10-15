@@ -38,7 +38,6 @@ function Destination() {
           <Input 
             placeHolder='Enter your destination' 
             type='text' 
-            border="1px solid #E76F51"
           />
           <HStack w={"100%"} justifyContent={"flex-end"} mt={"2em"} >
             <Button

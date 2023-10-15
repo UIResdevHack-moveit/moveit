@@ -1,19 +1,60 @@
 "use client"
-import React from 'react'
-import { useRouter } from 'next/router'
+import React, {useState} from 'react'
 
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
+import {auth} from '../firebase'
+import { useUser } from '@/context/usercontest';
 import Text from '@/components/text/text'
 import { Input } from '@/components/input/input'
-
+import { Box } from '@chakra-ui/react'
 
 
 function Signup() {
 
     const router = useRouter()
+    const { setUser } = useUser();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    function handleSubmit(e:any){
-        e.preventDefault()
-        router.push("/location")
+    const handleEmail = (value: string) => {
+        setEmail(value);
+    };
+    const handlePasswords = (value: string) => {
+        setPassword(value);
+    };
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          
+          router.push('/location'); 
+
+        } catch (error) {
+            
+          console.error('Login error:', error);
+        }
+    }
+
+    const handleGoogleSignIn = async () => {
+        const authProvider = new GoogleAuthProvider();
+        const authInstance = getAuth();
+    
+        try {
+          const result = await signInWithPopup(authInstance, authProvider);
+          // Successful Google login
+          console.log('Google User:', result.user);
+          setUser(result.user);
+          router.push('/location'); 
+
+        } catch (error) {
+          console.error('Google login error:', error);
+        }
     }
 
   return (
@@ -26,24 +67,40 @@ function Signup() {
                     fwt={400}
                     ftz='32px'
                 />
-                
-                <Text 
-                    text='Welcome back' 
-                    color='#080E11'
-                    fwt={400}
-                    ftz='12px'
-                    marginTop= "10px"
-                />
 
-                <form style={formStyle} onSubmit={handleSubmit} action="">
+                <Box mt={"10PX"} >
+                    <Text 
+                        text='Welcome back' 
+                        color='#080E11'
+                        fwt={400}
+                        ftz='12px'
+                    />
+                </Box>
+            
+                <form style={formStyle} onSubmit={handleLogin} action="">
 
-                    <Input placeHolder='Email' type='email'/>
-                    <Input placeHolder='Password' type='password' />
+                    <Input 
+                        placeHolder='Email' 
+                        type='email'
+                        onInputChange={handleEmail}
+                    />
+                    <Input 
+                        placeHolder='Password' 
+                        type='password' 
+                        onInputChange={handlePasswords}
+                    />
                     <div style={buttonParent}>
-                        <button style={buttonStyle}>Sign up</button>
+                        <button style={buttonStyle}>Log in</button>
+                    </div>
+                    <div>
+                        <button onClick={handleGoogleSignIn}>Log in with google</button>
                     </div>
                     <div style={smallCont}>
-                        <small style={small}>Forgotten password?</small>
+                        <small style={small}>Don't have an account? {' '}
+                        <Link style={link} href={"/signup"} >Sign up</Link> </small>
+                    </div>
+                    <div style={smallCont}>
+                        <small style={small}>Forgot password?</small>
                     </div>
 
 
@@ -58,6 +115,12 @@ function Signup() {
 const formStyle = {
     display: "block",
     margin: "auto",
+}
+
+const link ={
+    color: "#264653",
+    textDecoration:"none",
+    fontWeight:"600"
 }
 
 const buttonStyle ={

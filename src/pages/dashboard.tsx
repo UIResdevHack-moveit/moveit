@@ -3,6 +3,7 @@ import React from 'react'
 import { Box,HStack,Image } from '@chakra-ui/react'
 import { Icon } from '@iconify/react';
 
+import { useUser } from '@/context/usercontest';
 import Navbar from '@/components/navbar.tsx/navbar'
 import Topnav from '@/components/navbar.tsx/topnav'
 import Text from '@/components/text/text'
@@ -11,38 +12,18 @@ import Myavatar from '@/components/people/avatar'
 
 
 
-const data =[
-  {
-    name: "Idris",
-    location:"CHE",
-    src:"/assets/images/male1.png"
-  },
-  {
-    name: "Mary",
-    location:"BOT",
-    src:"/assets/images/female1.png"
-  },
-  {
-    name: "David",
-    location:"Phy",
-    src:"/assets/images/male2.png"
-  },
-  {
-    name: "Rodiat",
-    location:"ZOO",
-    src:"/assets/images/female2.png"
-  },
-]
-
 function Dashboard() {
+
+  const {user} = useUser()
+
   return (
-    <div>
+    <Box  overflow={"scroll"} h={"90vh"}>
       <Topnav/>
 
-      <Box  p={"1em"} py={".3em"}>
+      <Box  p={"1em"} py={"1em"} >
 
-        <Text 
-            text='Hello Mary!' 
+          <Text 
+            text =  { 'Hello' + ' ' +  user?.displayName} 
             color='#080E11'
             fwt={400}
             ftz='16px'
@@ -51,9 +32,8 @@ function Dashboard() {
            <Input 
             placeHolder='Find people in your location' 
             type='search' 
-            border="1px solid #E76F51"
-            width="100%"
           />
+
 
         <HStack 
           justifyContent={"space-between"} 
@@ -123,8 +103,31 @@ function Dashboard() {
       </Box>
       
       <Navbar/>
-    </div>
+    </Box>
   )
 }
 
 export default Dashboard
+
+const data =[
+  {
+    name: "Idris",
+    location:"CHE",
+    src:"/assets/images/male1.png"
+  },
+  {
+    name: "Mary",
+    location:"BOT",
+    src:"/assets/images/female1.png"
+  },
+  {
+    name: "David",
+    location:"Phy",
+    src:"/assets/images/male2.png"
+  },
+  {
+    name: "Rodiat",
+    location:"ZOO",
+    src:"/assets/images/female2.png"
+  },
+]

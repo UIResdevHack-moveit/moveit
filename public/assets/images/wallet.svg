@@ -1,0 +1,7 @@
+<svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group">
+<path id="Vector" d="M1 2.47499C1 2.18989 1.11326 1.91646 1.31486 1.71485C1.51646 1.51325 1.78989 1.39999 2.075 1.39999H21.425C21.7101 1.39999 21.9835 1.51325 22.1851 1.71485C22.3867 1.91646 22.5 2.18989 22.5 2.47499V17.525C22.5 17.8101 22.3867 18.0835 22.1851 18.2851C21.9835 18.4867 21.7101 18.6 21.425 18.6H2.075C1.78989 18.6 1.51646 18.4867 1.31486 18.2851C1.11326 18.0835 1 17.8101 1 17.525V2.47499Z" stroke="#080E11" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_2" d="M1 5.7H22.5" stroke="#080E11" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+<path id="Vector_3" d="M13.3625 14.3H18.2M22.5 2.47499V11.075M1 2.47499V11.075" stroke="#080E11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
